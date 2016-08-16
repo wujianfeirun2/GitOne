@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+  <bean id="u" class="com.bjsxt.dao.impl.UserDAOImpl">  </bean>
+	
+  <bean id="userService" class="com.bjsxt.service.UserService">
+  	
+  	<property name="userDAO" ref="u" />
+  	
+  	 <constructor-arg>
+  	 	<ref bean="u"/>
+  	 </constructor-arg>
+  </bean> 
+  
+  
+  
+  
+  
+  
+  
+  <!-- 可以写id，也可以写name，区别是name可以写特殊字符  -->
+  <bean id="u" class="com.bjsxt.dao.impl.UserDAOImpl"></bean>
+  <!-- scope属性中：singleton表示单例，prototype表示每次创建新的对象，其他的集中属性只有在spring mvc中使用  -->
+  <!-- lazy-init有点类似于懒加载 -->
+  <!-- prototype不和init-method destroy-methd一起使用 -->
+  <bean id="userService" class="com.bjsxt.service.UserService" scope="singleton" lazy-init="true" init-method="init" destroy-method="destory">
+    <!--  通过setUserDAO(UserDAOImpl u)传入,用此方法时UserService中必须有无参的构造函数 
+     <property name="userDAO" ref="u"></property>   -->
+     <constructor-arg>
+       <ref bean="u"/>
+     </constructor-arg>
+  </bean>
+
+
+</beans>

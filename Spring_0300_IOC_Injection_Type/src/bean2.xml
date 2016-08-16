@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+           
+           
+<!--    <bean id="custom" class="com.bjsxt.dao.impl.CustomDaoImpl">  </bean>  -->       
+   <bean id="customService" autowire="byType" class="com.bjsxt.service.CustomService">
+      
+<!--       <property name="customDao" ref="custom"></property>
+      <constructor-arg >
+         <ref bean="custom"/>
+      </constructor-arg> -->
+   </bean>
+
+
+
+
+
+</beans>
